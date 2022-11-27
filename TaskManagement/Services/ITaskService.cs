@@ -1,5 +1,7 @@
 ﻿using TaskManagement.DTO;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.JsonPatch;
+
 namespace TaskManagement.Services
 {
     public interface ITaskService
@@ -15,6 +17,7 @@ namespace TaskManagement.Services
         IEnumerable<TaskDto> GetByWord(string taskname);
         void DeleteTask(string userId);
         string UpdateTask(UpdateTaskDto taskRequest);
+        void UpdatePatch(string id,JsonPatchDocument taskRequest);
         string UpdatePendingTask(UpdatePendingTaskDto taskRequest);
     }
 }

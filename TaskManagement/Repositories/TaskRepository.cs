@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using TaskManagement.Repositories;
@@ -49,7 +50,10 @@ namespace TaskManagement.Repositories
             context.Entry(entity).State = EntityState.Modified;
             context.SaveChanges();
         }
-
+        public void check()
+        {
+            context.SaveChanges();
+        }
 
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using TaskManagement.Repositories;
+using Microsoft.AspNetCore.JsonPatch;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -119,6 +120,22 @@ namespace TaskManagement.Controllers
             try
             {
                 return Ok(_taskService.UpdateTask(taskRequest));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        //update partial
+        [HttpPatch]
+        [Route("api/update-specific")]
+        public IActionResult UpdatePatch(string id, JsonPatchDocument taskRequest)
+        {
+            try
+            {
+                _taskService.UpdatePatch(id, taskRequest);
+                return Ok();
             }
             catch (Exception ex)
             {

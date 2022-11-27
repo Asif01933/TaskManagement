@@ -56,3 +56,5 @@ C:\dotnet_projects\TaskManagement\TaskManagement\bin\Debug\net6.0\System.Net.Htt
 C:\dotnet_projects\TaskManagement\TaskManagement\bin\Debug\net6.0\System.Web.Http.dll
 C:\dotnet_projects\TaskManagement\TaskManagement\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\dotnet_projects\TaskManagement\TaskManagement\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\dotnet_projects\TaskManagement\TaskManagement\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\dotnet_projects\TaskManagement\TaskManagement\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

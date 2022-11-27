@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
+using System.Diagnostics.Eventing.Reader;
 
 namespace TaskManagement.Services
 {
@@ -29,7 +31,7 @@ namespace TaskManagement.Services
             
             var existingPerson1 = _personRepository.GetAll.FirstOrDefault(x => x.Name == taskRequest.TaskFrom);
             var existingPerson2 = _personRepository.GetAll.FirstOrDefault(x => x.Name == taskRequest.TaskTo);
-            if (existingPerson1.Name!= taskRequest.TaskFrom || existingPerson2.Name != taskRequest.TaskTo)
+            if (existingPerson1.Name.ToLower()!= taskRequest.TaskFrom.ToLower() || existingPerson2.Name.ToLower() != taskRequest.TaskTo.ToLower())
             {
                 throw new Exception($"User doesn't exist");
             }
@@ -151,6 +153,15 @@ namespace TaskManagement.Services
             _repository.Update(existingTask);
 
             return existingTask.Id;
+        }
+        public void UpdatePatch(string id,JsonPatchDocument taskRequest)
+        {
+            var existingTask = _repository.FindById(id);
+            _ = existingTask ?? throw new Exception($"Task with {id} doesn't exist");
+            taskRequest.ApplyTo(existingTask);
+            _repository.check();
+
+
         }
         public string UpdatePendingTask(UpdatePendingTaskDto taskRequest)
         {

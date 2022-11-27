@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using System.Collections.Generic;
 using System.Security.Claims;
 namespace TaskManagement.Repositories
 {
@@ -12,7 +13,9 @@ namespace TaskManagement.Repositories
         
         void Add(T entity);
         void Update(T entity);
+        
         void Delete(T entity);
+        void check();
         T FindById(string Id);
         
        

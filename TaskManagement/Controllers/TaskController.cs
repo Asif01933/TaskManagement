@@ -21,6 +21,7 @@ namespace TaskManagement.Controllers
         public TaskController(ITaskService taskService)
             => _taskService = taskService;
 
+        //create a new task
         [HttpPost]
         [Route("api/new-task")]
         public IActionResult Create(CreateTaskDto taskRequest)
@@ -28,9 +29,9 @@ namespace TaskManagement.Controllers
             return Ok(_taskService.CreateTask(taskRequest));
         }
 
-       
-       
 
+
+        //get all tasks
         [HttpGet]
         [Route("api/tasks")]
         public IActionResult Get()
@@ -45,6 +46,7 @@ namespace TaskManagement.Controllers
             }
         }
 
+        //given a name it showed requested task
         [HttpGet]
         [Route("api/ordered-tasks")]
         public IActionResult GetName(string taskfrom)
@@ -60,6 +62,7 @@ namespace TaskManagement.Controllers
             }
         }
 
+        //given a name it showed due tasks
         [HttpGet]
         [Route("api/due-tasks")]
         public IActionResult GetTaskTo(string taskto)
@@ -75,6 +78,7 @@ namespace TaskManagement.Controllers
             }
         }
 
+        //get tasks list by given any word
         [HttpGet]
         [Route("api/task-lists")]
         public IActionResult GetByWord(string taskname)
@@ -89,6 +93,8 @@ namespace TaskManagement.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        //given a name showed list of task completed
         [HttpGet]
         [Route("api/completed-tasks")]
         public IActionResult GetCompletedTask(string taskto)
@@ -105,7 +111,7 @@ namespace TaskManagement.Controllers
         }
 
 
-
+        //update task
         [HttpPut]
         [Route("api/tasks")]
         public IActionResult Update(UpdateTaskDto taskRequest)
@@ -120,6 +126,7 @@ namespace TaskManagement.Controllers
             }
         }
 
+        //make task completed.
         [HttpPut]
         [Route("api/checkcout-tasks")]
         public IActionResult UpdatePendingTask(UpdatePendingTaskDto taskRequest)
@@ -134,6 +141,7 @@ namespace TaskManagement.Controllers
             }
         }
 
+        //delete any task
         [HttpDelete]
         [Route("api/tasks/{id}")]
         public IActionResult Delete(string id)
@@ -148,6 +156,8 @@ namespace TaskManagement.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        //get task by id
         [HttpGet]
         [Route("api/tasks/{id}")]
         public IActionResult GetByTaskId(string id)

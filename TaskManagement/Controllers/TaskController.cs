@@ -31,7 +31,7 @@ namespace TaskManagement.Controllers
 
 
 
-        //get all tasks
+        //get all task
         [HttpGet]
         [Route("api/tasks")]
         public IActionResult Get()
